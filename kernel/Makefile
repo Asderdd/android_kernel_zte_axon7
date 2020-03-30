@@ -182,19 +182,12 @@ endif
 
 signing_key.priv signing_key.x509: x509.genkey
 	@echo "###"
-	@echo "### Now generating an X.509 key pair to be used for signing modules."
+	@echo "### Now copy an X.509 key pair."
 	@echo "###"
-	@echo "### If this takes a long time, you might wish to run rngd in the"
-	@echo "### background to keep the supply of entropy topped up.  It"
-	@echo "### needs to be run as root, and uses a hardware random"
-	@echo "### number generator if one is available."
+	cp -ar $(srctree)/cert/signing_key.priv signing_key.priv
+	cp -ar $(srctree)/cert/signing_key.x509 signing_key.x509
 	@echo "###"
-	openssl req -new -nodes -utf8 -$(CONFIG_MODULE_SIG_HASH) -days 36500 \
-		-batch -x509 -config x509.genkey \
-		-outform DER -out signing_key.x509 \
-		-keyout signing_key.priv 2>&1
-	@echo "###"
-	@echo "### Key pair generated."
+	@echo "### Key pair copied."
 	@echo "###"
 
 x509.genkey:
