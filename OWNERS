@@ -1,0 +1,126 @@
+owners:
+- ding.xuehua@zte.com.cn
+- yao.tierui@zte.com.cn
+- zhang.bo19@zte.com.cn
+- yang.yanpeng@zte.com.cn
+matchers:
+- exact: drivers/Makefile
+  owners:
+  - chen.baoyu@zte.com.cn
+  - ge.tianyuan@zte.com.cn
+  - rui.jiagui@zte.com.cn
+- exact: drivers/Kconfig
+  owners:
+  - chen.baoyu@zte.com.cn
+  - ge.tianyuan@zte.com.cn
+  - rui.jiagui@zte.com.cn
+- exact: arch/arm64/configs
+  owners:
+  - chen.baoyu@zte.com.cn
+  - ge.tianyuan@zte.com.cn
+  - rui.jiagui@zte.com.cn
+- exact: arch/arm/configs
+  owners:
+  - chen.baoyu@zte.com.cn
+  - ge.tianyuan@zte.com.cn
+  - rui.jiagui@zte.com.cn
+- exact: arch/arm64/boot/dts/qcom
+  owners:
+  - chen.baoyu@zte.com.cn
+  - ge.tianyuan@zte.com.cn
+  - rui.jiagui@zte.com.cn
+- exact: arch/arm/boot/dts/qcom
+  owners:
+  - chen.baoyu@zte.com.cn
+  - ge.tianyuan@zte.com.cn
+  - rui.jiagui@zte.com.cn
+- regex: include/.*
+  owners:
+  - yang.yanpeng@zte.com.cn
+- regex: arch/.*
+  owners:
+  - yang.yanpeng@zte.com.cn
+- regex: driver/.*
+  owners:
+  - yang.yanpeng@zte.com.cn
+  - zhang.ji230@zte.com.cn
+- regex: drivers/video/.*
+  owners:
+  - qin.jing7@zte.com.cn
+- regex: drivers/input/.*
+  owners:
+  - qin.jing7@zte.com.cn
+- regex: sound/.*
+  owners:
+  - wei.guohua@zte.com.cn
+  - wang.junwei2@zte.com.cn
+  - xu.feng8@zte.com.cn
+  - hao.bo15@zte.com.cn
+- regex: drivers/.*
+  owners:
+  - wang.jianping3@zte.com.cn
+  - cui.xiaochuan@zte.com.cn
+- regex: drivers/nfc/.*
+  owners:
+  - jiang.haitao15@zte.com.cn
+  - bao.jian@zte.com.cn
+- regex: drivers/tty/serial/.*
+  owners:
+  - jiang.haitao15@zte.com.cn
+  - xu.mei2@zte.com.cn
+- regex: drivers/bluetooth/.*
+  owners:
+  - jiang.haitao15@zte.com.cn
+  - xu.mei2@zte.com.cn
+- regex: drivers/usb/.*
+  owners:
+  - zhang.jing23@zte.com.cn
+- regex: techpack/audio/.*
+  owners:
+  - wei.guohua@zte.com.cn
+- regex: security/selinux/.*
+  owners:
+  - jia.jia@zte.com.cn
+- regex: drivers/media/radio/.*
+  owners:
+  - jiang.haitao15@zte.com.cn
+  - xu.bingbing@zte.com.cn
+- regex: kernel/printk/.*
+  owners:
+  - zhang.jiahao@zte.com.cn
+  - he.zhibin@zte.com.cn
+  - zhang.yuanyuan15@zte.com.cn
+  - jiang.zhifeng1@zte.com.cn
+- regex: kernel/power/.*
+  owners:
+  - zhang.jiahao@zte.com.cn
+  - he.zhibin@zte.com.cn
+  - zhang.yuanyuan15@zte.com.cn
+  - jiang.zhifeng1@zte.com.cn
+- regex: fs/f2fs/.*
+  owners:
+  - chen.shaohua3@zte.com.cn
+  - li.liang6@zte.com.cn
+- exact: include/net/ipv6.h
+  owners:
+  - li.kai77@zte.com.cn
+  - fu.bing@zte.com.cn
+- exact: include/linux/inet.h
+  owners:
+  - li.kai77@zte.com.cn
+  - fu.bing@zte.com.cn
+- exact: net/core/utils.c
+  owners:
+  - li.kai77@zte.com.cn
+  - fu.bing@zte.com.cn
+- regex: net/ipv6/.*
+  owners:
+  - li.kai77@zte.com.cn
+  - fu.bing@zte.com.cn
+- regex: net/ipv4/.*
+  owners:
+  - li.kai77@zte.com.cn
+  - fu.bing@zte.com.cn
+- regex: drivers/hallsensors/.*
+  owners:
+  - yang.chunni@zte.com.cn

@@ -1,0 +1,125 @@
+/ {
+	aliases {
+		i2c11 = &i2c_11;
+		i2c12 = &i2c_12;
+	};
+};
+
+&soc {
+	i2c_11: i2c@75b9000 {
+		compatible = "qcom,i2c-msm-v2";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg-names = "qup_phys_addr";
+		reg = <0x75b9000 0x1000>;
+		interrupt-names = "qup_irq";
+		interrupts = <0 105 0>;
+		dmas = <&dma_blsp2 20 64 0x20000020 0x20>,
+			<&dma_blsp2 21 32 0x20000020 0x20>;
+		dma-names = "tx", "rx";
+		qcom,master-id = <84>;
+		qcom,clk-freq-out = <400000>;
+		qcom,clk-freq-in  = <19200000>;
+		qcom,fs-clk-div  = <21>;
+		qcom,high-time-clk-div  = <21>;
+		clock-names = "iface_clk", "core_clk";
+		clocks = <&clock_gcc clk_gcc_blsp2_ahb_clk>,
+			 <&clock_gcc clk_gcc_blsp2_qup5_i2c_apps_clk>;
+		pinctrl-names = "i2c_active", "i2c_sleep";
+		pinctrl-0 = <&i2c_11_active>;
+		pinctrl-1 = <&i2c_11_sleep>;
+		};
+
+	i2c_12: i2c@75ba000 {
+		compatible = "qcom,i2c-msm-v2";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg-names = "qup_phys_addr";
+		reg = <0x75ba000 0x1000>;
+		interrupt-names = "qup_irq";
+		interrupts = <0 106 0>;
+		dmas = <&dma_blsp2 22 64 0x20000020 0x20>,
+			<&dma_blsp2 23 32 0x20000020 0x20>;
+		dma-names = "tx", "rx";
+		qcom,master-id = <84>;
+		qcom,clk-freq-out = <400000>;
+		qcom,clk-freq-in  = <19200000>;
+		qcom,fs-clk-div  = <21>;
+		qcom,high-time-clk-div  = <21>;
+		clock-names = "iface_clk", "core_clk";
+		clocks = <&clock_gcc clk_gcc_blsp2_ahb_clk>,
+			 <&clock_gcc clk_gcc_blsp2_qup6_i2c_apps_clk>;
+		pinctrl-names = "i2c_active", "i2c_sleep";
+		pinctrl-0 = <&i2c_12_active>;
+		pinctrl-1 = <&i2c_12_sleep>;
+		};
+};
+
+	&i2c_12 { /* BLSP1 QUP12 */
+		synaptics_dsx@20 {
+			compatible = "synaptics,dsx-i2c";
+			reg = <0x20>;
+			interrupt-parent = <&tlmm>;
+			interrupts = <125 0x2008>;
+			/* vdd-supply = <&pm8994_l22>; */
+			avdd-supply = <&pm8994_l22>;
+			pinctrl-names = "tlmm_ts_int_active", "tlmm_ts_int_suspend",
+							"tlmm_ts_reset_active", "tlmm_ts_reset_suspend";
+			pinctrl-0 = <&ts_int_active>;
+			pinctrl-1 = <&ts_int_suspend>;
+			pinctrl-2 = <&ts_reset_active>;
+			pinctrl-3 = <&ts_reset_suspend>;
+			synaptics,pwr-reg-name = "avdd";
+			/* synaptics,bus-reg-name = "vdd"; */
+			synaptics,ub-i2c-addr = <0x2c>;
+			synaptics,irq-gpio = <&tlmm 125 0x2008>; /* IRQF_ONESHOT | IRQF_TRIGGER_LOW */
+			synaptics,irq-on-state = <0>;
+			synaptics,vddio-gpio = <&tlmm 2 0x00>;
+			synaptics,power-delay-ms = <10>;
+			synaptics,reset-gpio = <&tlmm 89 0x00>;
+			synaptics,reset-delay-ms = <50>;
+			synaptics,reset-on-state = <0>;
+			synaptics,reset-active-ms = <20>;
+			/* uncomment and update line below as appropriate if there are 0D buttons */
+			synaptics,cap-button-codes = <102 158>;
+			/* uncomment and update lines below as appropriate if there are virtual buttons */
+			/* synaptics,vir-button-codes = <102 100 900 100 60 158 300 900 100 60>; */
+			/* synaptics,max-y-for-2d = <800>; */
+		};
+	};
+
+	&i2c_11 { /* BLSP1 QUP12 */
+		synaptics_dsx@20 {
+			compatible = "synaptics,dsx-i2c-2nd";
+			reg = <0x20>;
+			interrupt-parent = <&tlmm>;
+			interrupts = <24 0x2008>;
+			/* vdd-supply = <&pm8994_l22>; */
+			avdd-supply = <&pm8994_l17>;
+			pinctrl-names = "tlmm_ts_int_active", "tlmm_ts_int_suspend",
+							"tlmm_ts_reset_active", "tlmm_ts_reset_suspend";
+			pinctrl-0 = <&ts_int_active_2nd>;
+			pinctrl-1 = <&ts_int_suspend_2nd>;
+			pinctrl-2 = <&ts_reset_active_2nd>;
+			pinctrl-3 = <&ts_reset_suspend_2nd>;
+			synaptics,pwr-reg-name = "avdd";
+			/* synaptics,bus-reg-name = "vdd"; */
+			synaptics,ub-i2c-addr = <0x2c>;
+			synaptics,irq-gpio = <&tlmm 24 0x2008>; /* IRQF_ONESHOT | IRQF_TRIGGER_LOW */
+			synaptics,irq-on-state = <0>;
+			synaptics,vddio-gpio = <&tlmm 25 0x00>;
+			synaptics,power-delay-ms = <10>;
+			synaptics,reset-gpio = <&tlmm 33 0x00>;
+			synaptics,reset-delay-ms = <50>;
+			synaptics,reset-on-state = <0>;
+			synaptics,reset-active-ms = <20>;
+			synaptics,x-flip = <1>;
+			synaptics,y-flip = <1>;
+			/* uncomment and update line below as appropriate if there are 0D buttons */
+			synaptics,cap-button-codes = <102 158>;
+			/* uncomment and update lines below as appropriate if there are virtual buttons */
+			/* synaptics,vir-button-codes = <102 100 900 100 60 158 300 900 100 60>; */
+			/* synaptics,max-y-for-2d = <800>; */
+		};
+	};
+
